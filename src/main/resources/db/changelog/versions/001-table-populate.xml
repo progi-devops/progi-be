@@ -8,7 +8,7 @@
     <changeSet id="20221018-000-1" author="fricov">
         <insert tableName="sometable">
             <column name="id" value="1"/>
-            <column name="somedata" value="Hello from DB"/>
+            <column name="somedata" value="Hello from DB!"/>
         </insert>
     </changeSet>
 
