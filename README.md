@@ -5,6 +5,8 @@
 - (opcionalno) u application.properties dodati željene env. varijable u formatu:
   some.property=${ENV_VAR_NAME:default value}
   - primjer u ovome repozitoriju (src/main/resources)
+- (opcionalno) u pom.xml dodati dependency-e od Liquibase i H2, te dodati application-dev.properties za lokalni dev profil. Preporučeno da si olaksate zivot prilikom razvoja.
+  - Prilikom lokalnog pokretanja u konfiguraciji IDE-a postavite dev profil da bi se koristila H2 baza
 - (opcionalno) u pom.xml kao dependency dodati spring-boot-starter-actuator (prema primjeru u ovom repozitoriju) koji ce na putanju /actuator/health automatski izloziti informaciju o statusu aplikacije koju moze koristiti Render (health check kasnije u uputama)
 
 ## Deploy:
@@ -15,7 +17,7 @@ U Render dashboardu:
 - Region Frankfurt
 - Create Database
 - Kreiranje baze podataka može trajati par minuta
-- Free plan baza podataka ima max. pohranu od 1GB, te se baza briše nakon 90 dana.
+- Free plan baza podataka ima max. pohranu od 1GB, te se baza briše nakon 90 dana, što bi vam trebalo biti dovoljno do demonstracije.
 
 ### Kreiranje backenda:
 U Render dashboardu:
@@ -27,7 +29,7 @@ U Render dashboardu:
 - Environment Docker
 - Region Frankfurt
 - Na dnu proširiti _advanced_
-- Dodati potrebne environment varijable (npr. DB username, password, URL), kopirati vrijednosti iz postavki baze podataka na Renderu. Pripaziti jer URL koji je prikazan na Renderu nije JDBC URL, za ovaj primjer treba biti u formatu `jdbc:postgresql://hostname:port/database`
+- Dodati potrebne environment varijable (npr. DB username, password, URL), kopirati vrijednosti iz postavki baze podataka na Renderu. Pripaziti jer URL koji je prikazan na Renderu nije JDBC URL, za ovaj primjer treba biti u formatu `jdbc:postgresql://<hostname>:<port>/<database>`
 - Ako je dodan Spring Boot Actuator (prema zadnjoj točki poglavlja pripreme za deploy) postaviti `/api/actuator/health` kao Health Check Path (odnosno <context-path>/actuator/health)
 - Postaviti putanju za Dockerfile ovisno koji se package manager koristi (u ovom slučaju `./docker/maven/Dockerfile`)
 - Stisnuti Create Web Service
