@@ -7,6 +7,7 @@
   - primjer u ovome repozitoriju (src/main/resources)
 - (opcionalno) u pom.xml dodati dependency-e od Liquibase i H2, te dodati application-dev.properties za lokalni dev profil. Preporučeno da si olaksate zivot prilikom razvoja.
   - Prilikom lokalnog pokretanja u konfiguraciji IDE-a postavite dev profil da bi se koristila H2 baza
+  - Važno za Liquibase, jednom deployani changelogovi se ne smiju mijenjati! Promjene nad bazom rade se u novoj changelog datoteci - promjene su inkrementalne. Promjena postojećeg changeloga zahtijeva brisanje baze podataka.
 - (opcionalno) u pom.xml kao dependency dodati spring-boot-starter-actuator (prema primjeru u ovom repozitoriju) koji ce na putanju /actuator/health automatski izloziti informaciju o statusu aplikacije koju moze koristiti Render (health check kasnije u uputama)
 
 ## Deploy:
